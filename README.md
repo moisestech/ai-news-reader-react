@@ -1,6 +1,6 @@
 # AI News Reader ReactJS
 
-Artificial Intelligence News Reader in ReactJS
+Artificial Intelligence News Reader in ReactJS. The app uses revolutionary speech recognition software that allows you to control absolutely everything in the app using your voice.
 
 ## ⚙ Features
 
@@ -29,8 +29,9 @@ Coming Soon!
 
 ## ⛰️ Roadmap
 
--
+- Post to Tailwind CSS or Styled Components
 
 ## 📝 Todos
 
+- Light/Dark Theme
 - Finnish Tutorial
