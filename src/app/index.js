@@ -12,7 +12,7 @@ const alanAccessKey = process.env.ALAN_AI_ACCESS_KEY;
 import NewsCards from '../components/NewsCards';
 
 export default function App() {
-  const [newsArticles, setNewsArtcles] = useState([]);
+  const [newsArticles, setNewsArticles] = useState([]);
 
   // load environment connection with Alan AI
   useEffect(() => {
