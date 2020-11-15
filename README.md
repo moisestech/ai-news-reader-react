@@ -26,7 +26,34 @@
 ## 🌿 Application Tree
 
 ```bash
-Coming Soon!
+├── README.md
+├── package.json
+├── public
+│   ├── _redirects
+│   ├── assets
+│   │   ├── ai-news-reader-project-preview.png
+│   │   └── news-placeholder.png
+│   └── index.html
+├── src
+│   ├── app
+│   │   ├── app.css
+│   │   └── index.js
+│   ├── components
+│   │   ├── InfoCards
+│   │   │   ├── index.js
+│   │   │   ├── inforCards.json
+│   │   │   └── styles.js
+│   │   ├── Nav
+│   │   │   ├── index.js
+│   │   │   └── nav.css
+│   │   ├── NewsCard
+│   │   │   ├── index.js
+│   │   │   └── styles.js
+│   │   └── NewsCards
+│   │       ├── index.js
+│   │       └── styles.js
+│   └── index.js
+└── webpack.config.js
 ```
 
 ## ⛰️ Roadmap
