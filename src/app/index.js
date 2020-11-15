@@ -1,12 +1,12 @@
-import "./app.css";
-import { useState, useEffect } from "react";
+/* eslint-disable react/react-in-jsx-scope */
+import './app.css';
+import { useState, useEffect } from 'react';
 
 // ALAN AI
 import alanBtn from '@alan-ai/alan-sdk-web';
 
 // API KEY
 const alanAccessKey = process.env.ALAN_AI_ACCESS_KEY;
-
 
 // COMPONENTSD
 import NewsCards from '../components/NewsCards';
@@ -19,12 +19,12 @@ export default function App() {
     alanBtn({
       key: alanAccessKey,
       onCommand: ({ command, articles }) => {
-        if (command === "newHeadLines") {
+        if (command === 'newHeadLines') {
           console.log(articles);
           setNewsArticles(articles);
         }
-      }
-    })
+      },
+    });
   }, []);
 
   return (
