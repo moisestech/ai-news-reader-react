@@ -1,15 +1,15 @@
-const path = require("path");
-const webpack = require("webpack");
-const dotenv = require("dotenv");
+const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ''./src/index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "index_bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index_bundle.js'
   },
   module: {
     rules: [
