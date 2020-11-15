@@ -13,7 +13,7 @@ Artificial Intelligence News Reader in ReactJS. The app uses revolutionary speec
 
 ## 👁️‍🗨️ Project Preview
 
-Coming Soon!
+<img src="https://raw.githubusercontent.com/moisestech/ai-news-reader-react/main/public/assets/ai-news-reader-project-preview.png"/>
 
 ## 🗺 URL Tree
 
