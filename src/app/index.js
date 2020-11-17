@@ -1,27 +1,54 @@
 /* eslint-disable react/react-in-jsx-scope */
+// STYLES
 import './app.css';
+
+// REACT
 import { useState, useEffect } from 'react';
 
-// ALAN AI
+// PACKAGES
+import wordsToNumbers from 'words-to-numbers';
 import alanBtn from '@alan-ai/alan-sdk-web';
 
 // API KEY
 const alanAccessKey = process.env.ALAN_AI_ACCESS_KEY;
 
-// COMPONENTSD
-import NewsCards from '../components/NewsCards';
+// COMPONENTS
+import { NewsCards, Modal, Logo, Footer } from '../components';
 
 export default function App() {
+  const [activeArticle, setActiveArticle] = useState(0);
   const [newsArticles, setNewsArticles] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   // load environment connection with Alan AI
   useEffect(() => {
     alanBtn({
       key: alanAccessKey,
-      onCommand: ({ command, articles }) => {
-        if (command === 'newHeadLines') {
-          console.log(articles);
+      onCommand: ({ command, articles, number }) => {
+        if (command === 'newHeadlines') {
           setNewsArticles(articles);
+          setActiveArticle(-1);
+        } else if (command === 'instructions') {
+          setIsOpen(true);
+        } else if (command === 'highlight') {
+          setActiveArticle(
+            (prevActiveArticle) => prevActiveArticle + 1,
+          );
+        } else if (command === 'open') {
+          const parsedNumber =
+            number.length > 2
+              ? wordsToNumbers(number, { fuzzy: true })
+              : number;
+          const article = articles[parsedNumber - 1];
+
+          if (parsedNumber > articles.length) {
+            alanBtn().playText('Please try that again...');
+          } else if (article) {
+            window.open(article.url, '_blank');
+            alanBtn().playText('Opening...');
+          } else {
+            alanBtn().playText('Please try that again...');
+          }
         }
       },
     });
@@ -29,8 +56,13 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1>Hello Alan AI!</h1>
-      <NewsCards artciles={newsArticles} />
+      <Logo />
+      <NewsCards
+        articles={newsArticles}
+        activeArticle={activeArticle}
+      />
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+      {!newsArticles.length ? <Footer /> : null}
     </div>
   );
 }
