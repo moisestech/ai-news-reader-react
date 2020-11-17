@@ -4,6 +4,12 @@
 
 **Artificial Intelligence News Reader in ReactJS**. The app uses revolutionary speech recognition software that allows you to control absolutely everything in the app using your voice.
 
+## Setup:
+
+```bash
+run npm i && npm start to start development server
+```
+
 ## ⚙ Features
 
 - [Alan A.I. API](https://alan.app/)
@@ -58,7 +64,9 @@
 
 ## ⛰️ Roadmap
 
-- Post to Tailwind CSS or Styled Components
+- Migrate to Tailwind CSS or Styled Components
+- Can access any API dynamically, always pulls it, iterates through it.
+- Users can interact with voice and GUI.
 
 ## 📝 Todos
 
