@@ -4,6 +4,16 @@ import useStyles from '../../../../styles';
 // MATERIAL-UI
 import { Typography, Chip } from '@material-ui/core';
 
+const categories = [
+  'Business',
+  'Entertainment',
+  'General',
+  'Health',
+  'Science',
+  'Sports',
+  'Technology',
+];
+
 export default function NewsByCategory() {
   const classes = useStyles();
 
@@ -12,15 +22,7 @@ export default function NewsByCategory() {
       <div className={classes.infoContainer}>
         <Typography variant="h5">News by Categories</Typography>
         <div className={classes.chipContainer}>
-          {[
-            'Business',
-            'Entertainment',
-            'General',
-            'Health',
-            'Science',
-            'Sports',
-            'Technology',
-          ].map((category, i) => (
+          {categories.map((category, i) => (
             <Chip
               label={category}
               color="primary"
