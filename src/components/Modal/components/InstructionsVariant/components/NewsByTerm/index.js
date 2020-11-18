@@ -4,6 +4,13 @@ import useStyles from '../../../../styles';
 // MATERIAL-UI
 import { Typography, Chip } from '@material-ui/core';
 
+const terms = [
+  'Donald Trump',
+  'Bitcoin',
+  'PlayStation 5',
+  'Smartphones',
+];
+
 export default function NewsByTerm() {
   const classes = useStyles();
 
@@ -12,12 +19,7 @@ export default function NewsByTerm() {
       <div className={classes.infoContainer}>
         <Typography variant="h5">News by Terms</Typography>
         <div className={classes.chipContainer}>
-          {[
-            'Donald Trump',
-            'Bitcoin',
-            'PlayStation 5',
-            'Smartphones',
-          ].map((term, i) => (
+          {terms.map((term, i) => (
             <Chip
               label={term}
               color="primary"
