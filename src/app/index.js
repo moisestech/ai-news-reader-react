@@ -1,6 +1,4 @@
 /* eslint-disable react/react-in-jsx-scope */
-// STYLES
-import './app.css';
 
 // REACT
 import { useState, useEffect } from 'react';
@@ -13,7 +11,10 @@ import alanBtn from '@alan-ai/alan-sdk-web';
 const alanAccessKey = process.env.ALAN_AI_ACCESS_KEY;
 
 // COMPONENTS
-import { NewsCards, Modal, Logo, Footer } from '../components';
+import NewsCards from '../components/NewsCards';
+import Logo from '../components/Logo';
+import Modal from '../components/Modal';
+import Footer from '../components/Footer';
 
 export default function App() {
   const [activeArticle, setActiveArticle] = useState(0);
@@ -56,12 +57,16 @@ export default function App() {
 
   return (
     <div className="app">
-      <Logo />
+      <Logo newsArticles={newsArticles} />
       <NewsCards
         articles={newsArticles}
         activeArticle={activeArticle}
       />
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Modal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        showFeedback={false}
+      />
       {!newsArticles.length ? <Footer /> : null}
     </div>
   );
