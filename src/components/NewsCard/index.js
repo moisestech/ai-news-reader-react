@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // MATERIAL-UI
@@ -15,22 +16,58 @@ import {
 import useStyles from './styles.js';
 
 export default function NewsCard({
-  article: { description, published, source, title, url, urlToImage },
+  article: {
+    description,
+    publishedAt,
+    source,
+    title,
+    url,
+    urlToImage,
+  },
+  activeArticle,
   i,
 }) {
   const classes = useStyles();
+  const [elRefs, setElRefs] = useState([]);
+  const scrollToRef = (ref) =>
+    window.scroll(0, ref.current.offsetTop - 50);
+
+  // why?
+  useEffect(() => {
+    window.scroll(0, 0);
+
+    setElRefs((refs) =>
+      Array(20)
+        .fill()
+        .map((_, j) => refs[j] || createRef()),
+    );
+  }, []);
+
+  // why?
+  useEffect(() => {
+    if (i === activeArticle && elRefs[activeArticle]) {
+      scrollToRef(elRefs[activeArticle]);
+    }
+  }, [i, activeArticle, elRefs]);
 
   return (
-    <Card>
-      <CardActionArea>
+    <Card
+      ref={elRefs[i]}
+      className={classNames(
+        classes.card,
+        activeArticle === i ? classes.activeCard : null,
+      )}
+    >
+      <CardActionArea href={url} target="_blank">
         <CardMedia
           className={classes.media}
-          img={
+          image={
             urlToImage ||
             'https://www.industry.gov.au/sites/default/files/August%202018/image/news-placeholder-738.png'
           }
+          title={title}
         />
-        <div>
+        <div className={classes.details}>
           <Typography
             variant="body2"
             color="textSecondary"
@@ -46,8 +83,12 @@ export default function NewsCard({
             {source.name}
           </Typography>
         </div>
-
-        <Typography gutterBottom variant="h5">
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
           {title}
         </Typography>
         <CardContent>
@@ -60,12 +101,11 @@ export default function NewsCard({
           </Typography>
         </CardContent>
       </CardActionArea>
-
-      <CardActions>
-        <Button size="small" color="primary">
+      <CardActions className={classes.cardActions}>
+        <Button size="small" color="primary" href={url}>
           Learn More
         </Button>
-        <Typography variant="h5" color="textSecondary">
+        <Typography variant="h5" color="textSecondary" component="h2">
           {i + 1}
         </Typography>
       </CardActions>
