@@ -32,7 +32,8 @@ export default function ShowFeedback() {
 
   return (
     <div className={classes.paper}>
-      <Typography variant="h3">
+      Feedback
+      {/* <Typography variant="h3">
         Something went wrong? Send us some feedback
       </Typography>
       <br />
@@ -58,7 +59,7 @@ export default function ShowFeedback() {
         <Button type="submit" variant="outlined" color="primary">
           Send
         </Button>
-      </form>
+      </form> */}
     </div>
   );
 }
