@@ -14,13 +14,14 @@ export default function InstructionsVariant() {
 
   return (
     <div className={classes.paper}>
-      <Typography variant="h3">Instructions</Typography>
+      Variant Instruction
+      {/* <Typography variant="h3">Instructions</Typography>
       <Divider />
       <NewsByTerm />
       <Divider />
       <NewsByCategory />
       <Divider />
-      <NewsBySource />
+      <NewsBySource /> */}
     </div>
   );
 }
